@@ -1,6 +1,8 @@
 import matplotlib.pyplot as pyplot
 import numpy
 
+# Used to match indexes to the name of the month
+
 month_dictionary = {
     0 : 'July',
     1 : 'August',
@@ -15,6 +17,8 @@ month_dictionary = {
     10 : 'May',
     11 : 'June'
 }
+
+# A bunch of data that took me way too long to type out
 
 yearly_revenue_lists = [
     # Fiscal Year 2023
@@ -80,6 +84,9 @@ yearly_revenue_lists = [
         [21058.2, 18826.3, 2231.9, 11.9]
     ]
 ]
+
+# The end of the data!
+# The start of all of the fun stuff
 
 chosen_year = input('Type in a year in the format "2023" : ')
 
