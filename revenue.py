@@ -102,23 +102,19 @@ finding_chosen_year = [year[0][0] for year in yearly_revenue_lists if year[0][0]
 
 if finding_chosen_year == []:
     print('No matches were found for the provided year!')
-    chosen_year_was_found = False
+    print('Please try again! Program will close in 3 seconds.')
+    time.sleep(3)
+    sys.exit()
 else:
     for found_year in finding_chosen_year:
         print(found_year)
 
-if chosen_year_was_found:
     for index, outer_list in enumerate(yearly_revenue_lists):
         for inner_list in outer_list[0]:
             if inner_list == int(chosen_year):
                 found_year_index = index
 
     year = yearly_revenue_lists[found_year_index]
-else:
-    print('Please try again! Program will close in 3 seconds.')
-    chosen_year_was_found = True
-    time.sleep(3)
-    sys.exit()
 
 # The function to present the user with the graph for the Actual and Forecast Revenue Data for the specified year
 
