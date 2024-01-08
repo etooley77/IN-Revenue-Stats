@@ -1,6 +1,9 @@
 import matplotlib.pyplot as pyplot
 import numpy
 
+import sys
+import time
+
 # Used to match indexes to the name of the month
 
 month_dictionary = {
@@ -30,7 +33,7 @@ yearly_revenue_lists = [
         # August
         [1, 1549.5, 1348.5, 201.0, 14.9],
         # September
-        [2, 1879.0, 1783.4, 95.6, 5.4, ],
+        [2, 1879.0, 1783.4, 95.6, 5.4],
         # October
         [3, 1654.1, 1376.7, 277.4, 20.2],
         # November
@@ -50,60 +53,71 @@ yearly_revenue_lists = [
         # June
         [11, 2365.3, 2237.1, 128.2, 5.7],
         # Year-to-Date
-        [21058.2, 18826.3, 2231.9, 11.9]
+        ['YTD', 21058.2, 18826.3, 2231.9, 11.9]
     ],
     # Fiscal Year 1967
     [
         [2022],
         # [(Month, shown as a number starting with July as 0), (Actual Revenue), (Revenue Forecast), (Difference), (Percent Error)]
         # July
-        [0, 1482.8, 1330.1, 152.7, 11.5],
+        [0, ],
         # August
-        [1, 1549.5, 1348.5, 201.0, 14.9],
+        [1, ],
         # September
-        [2, 1879.0, 1783.4, 95.6, 5.4, ],
+        [2, ],
         # October
-        [3, 1654.1, 1376.7, 277.4, 20.2],
+        [3, ],
         # November
-        [4, 1352.0, 1230.5, 121.5, 9.9],
+        [4, ],
         # December
-        [5, 1711.9, 1539.9, 172.0, 11.2],
+        [5, ],
         # January
-        [6, 1943.6, 1801.9, 141.7, 7.9],
+        [6, ],
         # February
-        [7, 1220.0, 995.2, 224.8, 22.6],
+        [7, ],
         # March
-        [8, 1499.7, 1278.6, 221.1, 17.3],
+        [8, ],
         # April
-        [9, 2859.2, 2580.2, 279.0, 10.8],
+        [9, ],
         # May
-        [10, 1541.2, 1324.3, 216.9, 16.4],
+        [10, ],
         # June
-        [11, 2365.3, 2237.1, 128.2, 5.7],
+        [11, ],
         # Year-to-Date
-        [21058.2, 18826.3, 2231.9, 11.9]
+        ['YTD', ]
     ]
 ]
 
 # The end of the data!
-# The start of all of the fun stuff
+# The start of all of the fun stuff!
 
+global chosen_year
 chosen_year = input('Type in a year in the format "2023" : ')
+
+chosen_year_was_found = True
 
 # finding_chosen_year takes the first value of the first list in the found year. Then it prints it.
 
 finding_chosen_year = [year[0][0] for year in yearly_revenue_lists if year[0][0] == chosen_year]
 
-for found_year in finding_chosen_year:
-    print(found_year)
+if finding_chosen_year == []:
+    print('No matches were found for the provided year!')
+    chosen_year_was_found = False
+else:
+    for found_year in finding_chosen_year:
+        print(found_year)
 
-for index, outer_list in enumerate(yearly_revenue_lists):
-    for inner_list in outer_list[0]:
-        if inner_list == int(chosen_year):
-            found_year_index = index
+if chosen_year_was_found:
+    for index, outer_list in enumerate(yearly_revenue_lists):
+        for inner_list in outer_list[0]:
+            if inner_list == int(chosen_year):
+                found_year_index = index
 
-
-year = yearly_revenue_lists[found_year_index]
+    year = yearly_revenue_lists[found_year_index]
+else:
+    print('Please try again! Program will close in 3 seconds.')
+    time.sleep(3)
+    sys.exit()
 
 # The function to present the user with the graph for the Actual and Forecast Revenue Data for the specified year
 
