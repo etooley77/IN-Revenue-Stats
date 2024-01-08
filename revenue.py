@@ -116,6 +116,7 @@ if chosen_year_was_found:
     year = yearly_revenue_lists[found_year_index]
 else:
     print('Please try again! Program will close in 3 seconds.')
+    chosen_year_was_found = True
     time.sleep(3)
     sys.exit()
 
