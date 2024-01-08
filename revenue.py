@@ -91,7 +91,6 @@ yearly_revenue_lists = [
 # The end of the data!
 # The start of all of the fun stuff!
 
-global chosen_year
 chosen_year = input('Type in a year in the format "2023" : ')
 
 # finding_chosen_year takes the first value of the first list in the found year. Then it prints it.
