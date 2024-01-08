@@ -95,16 +95,14 @@ chosen_year = input('Type in a year in the format "2023" : ')
 
 # finding_chosen_year takes the first value of the first list in the found year. Then it prints it.
 
-finding_chosen_year = [year[0][0] for year in yearly_revenue_lists if year[0][0] == chosen_year]
+try:
+    finding_chosen_year = [year[0][0] for year in yearly_revenue_lists]
 
-if finding_chosen_year == []:
-    print('No matches were found for the provided year!')
-    print('Please try again! Program will close in 3 seconds.')
-    time.sleep(3)
-    sys.exit()
-else:
     for found_year in finding_chosen_year:
-        print(found_year)
+        if found_year == chosen_year:
+            print(found_year)
+        else:
+            pass
 
     for index, outer_list in enumerate(yearly_revenue_lists):
         for inner_list in outer_list[0]:
@@ -112,6 +110,11 @@ else:
                 found_year_index = index
 
     year = yearly_revenue_lists[found_year_index]
+except NameError:
+    print('No matches were found!')
+    print('Please try again! Program will close in 3 seconds.')
+    time.sleep(3)
+    sys.exit()
 
 # The function to present the user with the graph for the Actual and Forecast Revenue Data for the specified year
 
