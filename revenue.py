@@ -94,8 +94,6 @@ yearly_revenue_lists = [
 global chosen_year
 chosen_year = input('Type in a year in the format "2023" : ')
 
-chosen_year_was_found = True
-
 # finding_chosen_year takes the first value of the first list in the found year. Then it prints it.
 
 finding_chosen_year = [year[0][0] for year in yearly_revenue_lists if year[0][0] == chosen_year]
