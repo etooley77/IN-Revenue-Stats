@@ -185,6 +185,37 @@ def program():
             [2018],
             # [(Month, shown as a number starting with July as 0), (Actual Revenue), (Revenue Forecast), (Difference), (Percent Error)]
             # July
+            [0, 1152.5, 1173.0, 20.5, 1.7],
+            # August
+            [1, 1020.8, 1037.1, 16.3, 1.6],
+            # September
+            [2, 1416.7, 1479.9, 63.1, 4.3],
+            # October
+            [3, 1164.7, 1192.2, 27.5, 2.3],
+            # November
+            [4, 1015.0, 1026.3, 11.3, 1.1],
+            # December
+            [5, 1327.3, 1321.6, 5.7, 0.4],
+            # January
+            [6, 1605.0, 1511.7, 93.3, 6.2],
+            # February
+            [7, 811.6, 791.3, 20.3, 2.6],
+            # March
+            [8, 1037.3, 1085.5, 48.2, 4.4],
+            # April
+            [9, 2038.6, 1996.6, 42.0, 2.1],
+            # May
+            [10, 1065.2, 1109.4, 44.2, 4.0],
+            # June
+            [11, 1916.7, 1835.7, 81.0, 4.4],
+            # Year-to-Date
+            ['YTD', 15571.3, 15560.4, 11.0, 0.1]
+        ],
+        # Fiscal Year 2017
+        [
+            [2017],
+            # [(Month, shown as a number starting with July as 0), (Actual Revenue), (Revenue Forecast), (Difference), (Percent Error)]
+            # July
             [0, ],
             # August
             [1, ],
