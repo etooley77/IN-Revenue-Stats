@@ -272,6 +272,26 @@ def program():
         time.sleep(3)
         sys.exit()
 
+    # The functino to graph out all the values from a certain month across years
+        
+    def specific_month_graph():
+        chosen_month = input('Type in a month in the format "January" : ')
+
+        month_key = []
+
+            # Helper function for returning the key when given a value
+
+        def get_key_from_value(chosen_month):
+            for key, value in month_dictionary.items():
+                if value == chosen_month:
+                    month_key.append(key)
+
+        get_key_from_value(chosen_month)
+
+        # finding_chosen_month takes the first value of the second list in the found year. Then it prints it.
+
+        chosen_month_list = [year[1][month_key[0]] for year in yearly_revenue_lists]
+
     # The function to present the user with the graph for the Actual and Forecast Revenue Data for the specified year
 
     def revenue_graph(rounded_average_actual_revenue, rounded_average_forecast_revenue):
@@ -420,6 +440,7 @@ def program():
 
         print('Show me the Actual/Forecast Revenue Graph (a)')
         print('Show me the Percent Error Graph (b)')
+        print('Show me the actual revenue for a specific month (m)')
         print('Or rerun the program with a different year (r)')
         choice = input('Type your choice here : ')
 
