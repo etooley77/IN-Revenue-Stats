@@ -211,86 +211,59 @@ def program():
             # Year-to-Date
             ['YTD', 15571.3, 15560.4, 11.0, 0.1]
         ],
-        # Fiscal Year 2017
-        [
-            [2017],
-            # [(Month, shown as a number starting with July as 0), (Actual Revenue), (Revenue Forecast), (Difference), (Percent Error)]
-            # July
-            [0, ],
-            # August
-            [1, ],
-            # September
-            [2, ],
-            # October
-            [3, ],
-            # November
-            [4, ],
-            # December
-            [5, ],
-            # January
-            [6, ],
-            # February
-            [7, ],
-            # March
-            [8, ],
-            # April
-            [9, ],
-            # May
-            [10, ],
-            # June
-            [11, ],
-            # Year-to-Date
-            ['YTD', ]
-        ],
     ]
 
     # The end of the data!
     # The start of all of the fun stuff!
 
-    chosen_year = int(input('Type in a year in the format "2023" : '))
-
-    # finding_chosen_year takes the first value of the first list in the found year. Then it prints it.
-
-    try:
-        finding_chosen_year = [year[0][0] for year in yearly_revenue_lists]
-
-        for found_year in finding_chosen_year:
-            if found_year == chosen_year:
-                print(found_year)
-            else:
-                pass
-
-        for index, outer_list in enumerate(yearly_revenue_lists):
-            for inner_list in outer_list[0]:
-                if inner_list == chosen_year:
-                    found_year_index = index
-
-        year = yearly_revenue_lists[found_year_index]
-    except NameError:
-        print('No matches were found!')
-        print('Please try again! Program will close in 3 seconds.')
-        time.sleep(3)
-        sys.exit()
-
-    # The functino to graph out all the values from a certain month across years
+    # The function to graph out all the values from a certain month across years
         
-    def specific_month_graph():
-        chosen_month = input('Type in a month in the format "January" : ')
+    def specified_month_graphs():
+        for key, value in month_dictionary.items():
+            print(f'{key} : {value}')
 
-        month_key = []
+        chosen_month = int(input(""))
+        month_in_list = chosen_month + 1
 
-            # Helper function for returning the key when given a value
+        months = [year[month_in_list][1] for year in yearly_revenue_lists]
+        years = [year[0] for year in yearly_revenue_lists]
+        month = month_dictionary[chosen_month]
+        print(month)
 
-        def get_key_from_value(chosen_month):
-            for key, value in month_dictionary.items():
-                if value == chosen_month:
-                    month_key.append(key)
+        def graphing_monthly_values(months, years):
+            pyplot.plot(years, months)
+            pyplot.title(f'Revenue for {month} across the years')
 
-        get_key_from_value(chosen_month)
+            pyplot.xlabel('Year')
+            pyplot.xlim(2000, 2025)
 
-        # finding_chosen_month takes the first value of the second list in the found year. Then it prints it.
+            pyplot.ylabel('Revenue')
+            pyplot.ylim(0, 10000)
 
-        chosen_month_list = [year[1][month_key[0]] for year in yearly_revenue_lists]
+            for year in yearly_revenue_lists:
+                x = year[0][0]
+                y = year[month_in_list][1]
+                pyplot.scatter(x, y, color='blue', label=f'{x}, {y}', s=20)
+
+            pyplot.grid(True, linestyle='solid', alpha=0.5)
+
+            pyplot.legend(fontsize='small', ncol=2, loc='upper left')
+
+            pyplot.show()
+
+        graphing_monthly_values(months, years)
+
+        try:
+            print('Try again with a different month (t)')
+            print('Rerun the program (r)')
+            another_choice = input('Type here : ')
+
+            if another_choice == 't':
+                specified_month_graphs()
+            elif another_choice == 'r':
+                program()
+        except:
+            another_choice = input('Type here : ')
 
     # The function to present the user with the graph for the Actual and Forecast Revenue Data for the specified year
 
@@ -440,7 +413,6 @@ def program():
 
         print('Show me the Actual/Forecast Revenue Graph (a)')
         print('Show me the Percent Error Graph (b)')
-        print('Show me the actual revenue for a specific month (m)')
         print('Or rerun the program with a different year (r)')
         choice = input('Type your choice here : ')
 
@@ -459,6 +431,37 @@ def program():
         else:
             choice = input('Type your choice here : ')
 
-    graphs()
+    print('Type in a year in the format "2023" to see the data for that specific year.')
+    print('See the data of a specific month across all years (1)')
+    chosen_year = int(input('Type here : '))
+
+    # finding_chosen_year takes the first value of the first list in the found year. Then it prints it.
+
+    if chosen_year > 1900:
+        try:
+            finding_chosen_year = [year[0][0] for year in yearly_revenue_lists]
+
+            for found_year in finding_chosen_year:
+                if found_year == chosen_year:
+                    print(found_year)
+                else:
+                    pass
+
+            for index, outer_list in enumerate(yearly_revenue_lists):
+                for inner_list in outer_list[0]:
+                    if inner_list == chosen_year:
+                        found_year_index = index
+
+            year = yearly_revenue_lists[found_year_index]
+            graphs()
+        except NameError:
+            print('No matches were found!')
+            print('Please try again! Program will close in 3 seconds.')
+            time.sleep(3)
+            sys.exit()
+    elif chosen_year == 1:
+        specified_month_graphs()
+    else:
+        chosen_year = int(input('Type here : '))
 
 program()

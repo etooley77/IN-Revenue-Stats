@@ -1,0 +1,31 @@
+# Fiscal Year 
+        [
+            [],
+            # [(Month, shown as a number starting with July as 0), (Actual Revenue), (Revenue Forecast), (Difference), (Percent Error)]
+            # July
+            [0, ],
+            # August
+            [1, ],
+            # September
+            [2, ],
+            # October
+            [3, ],
+            # November
+            [4, ],
+            # December
+            [5, ],
+            # January
+            [6, ],
+            # February
+            [7, ],
+            # March
+            [8, ],
+            # April
+            [9, ],
+            # May
+            [10, ],
+            # June
+            [11, ],
+            # Year-to-Date
+            ['YTD', ]
+        ],
